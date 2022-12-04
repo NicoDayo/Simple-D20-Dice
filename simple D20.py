@@ -1,6 +1,14 @@
 import random
 import sys
 
+def verify_input(input):
+    try:
+        if input.lower() not in ('y','n'):
+            raise ValueError
+    except ValueError:
+        print('Invalid Input')
+        sys.exit()
+        
 def Crit_Check(rollu):
 
     if rollu == 1:
@@ -17,7 +25,7 @@ while reroll.lower() == "y":
     minval = 1
     maxval = 20
 
-    print('rolling.... \n')
+    print('\n rolling.... \n')
 
     print("*Vine Boom* \n")
     
@@ -27,6 +35,9 @@ while reroll.lower() == "y":
 
     Crit_Check(roll)
     print()
+
     reroll = input("Reroll? type y or n: ")
-    if reroll.lower() == 'n':
+    verify_input(reroll)
+    if reroll == 'n':
+        print('okie ')
         sys.exit()
